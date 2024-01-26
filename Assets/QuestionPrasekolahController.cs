@@ -6,16 +6,15 @@ using UnityEngine.UI;
 
 public class QuestionPrasekolahController : MonoBehaviour
 {
-    public Image imageAnswer;
+    //public Image imageAnswer;
     public JawapanPrasekolahController jawapan;
     public List<Transform> questions;
     public string realAnswer;
-    public int randomNumber;
 
     // Start is called before the first frame update
     void Start()
     {
-        imageAnswer = transform.GetChild(0).transform.GetChild(1).transform.GetComponent<Image>();
+        //imageAnswer = transform.GetChild(0).transform.GetChild(1).transform.GetComponent<Image>();
         jawapan = GameObject.Find("jawapan").GetComponent<JawapanPrasekolahController>();
     }
 
@@ -33,10 +32,10 @@ public class QuestionPrasekolahController : MonoBehaviour
                 }
             }
             //pick the item using random number and display answer to the question
-            randomNumber = Random.Range(0, 3);
+            // randomNumber = Random.Range(0, 3);
 
-            realAnswer = questions[randomNumber].name;
-            imageAnswer.sprite = questions[randomNumber].GetChild(0).GetComponent<Image>().sprite;
+            realAnswer = questions[jawapan.randomNumber].name;
+            //imageAnswer.sprite = questions[jawapan.randomNumber].GetChild(0).GetComponent<Image>().sprite;
             jawapan.isgamestart = false;
         }
     }
