@@ -6,6 +6,7 @@ public class loadStars : MonoBehaviour
 {
     public Transform[] stars;
     public JawapanPrasekolahController jawapan;
+    public bool isFailed;
 
 
     // Start is called before the first frame update
@@ -24,33 +25,66 @@ public class loadStars : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //two stars
-        if (jawapan.steps >= 1 && jawapan.steps <= (jawapan.bil / 2))
+        if (!isFailed)
         {
 
-            stars[0].gameObject.SetActive(true);
-        }
-        else if (jawapan.steps > (jawapan.bil / 2) && jawapan.steps < jawapan.bil)
-        {
+            //two stars
+            if (jawapan.steps >= 1 && jawapan.steps <= (jawapan.bil / 2))
+            {
 
-            stars[0].gameObject.SetActive(true);
-            stars[1].gameObject.SetActive(true);
-        }
-        else if (jawapan.steps == jawapan.bil)
-        {
+                stars[0].gameObject.SetActive(true);
+            }
+            else if (jawapan.steps > (jawapan.bil / 2) && jawapan.steps < jawapan.bil)
+            {
 
-            stars[0].gameObject.SetActive(true);
-            stars[1].gameObject.SetActive(true);
-            stars[2].gameObject.SetActive(true);
+                stars[0].gameObject.SetActive(true);
+                stars[1].gameObject.SetActive(true);
+            }
+            else if (jawapan.steps == jawapan.bil)
+            {
 
+                stars[0].gameObject.SetActive(true);
+                stars[1].gameObject.SetActive(true);
+                stars[2].gameObject.SetActive(true);
+
+            }
+            else
+            {
+                stars[0].gameObject.SetActive(false);
+                stars[1].gameObject.SetActive(false);
+                stars[2].gameObject.SetActive(false);
+
+            }
         }
         else
         {
-            stars[0].gameObject.SetActive(false);
-            stars[1].gameObject.SetActive(false);
-            stars[2].gameObject.SetActive(false);
+            //two stars
+            if (jawapan.stepsSoalanBetul >= 1 && jawapan.stepsSoalanBetul <= 2)
+            {
 
+                stars[0].gameObject.SetActive(true);
+            }
+            else if (jawapan.stepsSoalanBetul == 3 || jawapan.stepsSoalanBetul == 4)
+            {
+
+                stars[0].gameObject.SetActive(true);
+                stars[1].gameObject.SetActive(true);
+            }
+            else if (jawapan.stepsSoalanBetul == 5)
+            {
+
+                stars[0].gameObject.SetActive(true);
+                stars[1].gameObject.SetActive(true);
+                stars[2].gameObject.SetActive(true);
+
+            }
+            else
+            {
+                stars[0].gameObject.SetActive(false);
+                stars[1].gameObject.SetActive(false);
+                stars[2].gameObject.SetActive(false);
+
+            }
         }
     }
 }

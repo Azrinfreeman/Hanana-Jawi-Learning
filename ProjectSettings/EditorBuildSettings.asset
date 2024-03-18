@@ -24,6 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Part1/P1L4.unity
     guid: 14a3b38baa8ec744ebed2b0ca04cd4ff
   - enabled: 1
+    path: Assets/Scenes/Part1/level5/P1L5.unity
+    guid: aae248c37a60c8d45a2d3a7e8d5bb8d2
+  - enabled: 1
+    path: Assets/Scenes/Part1/level6/P1L6.unity
+    guid: 288893cf0463d3f4a8866159b424d8b7
+  - enabled: 1
     path: Assets/Scenes/Part2/P2L1.unity
     guid: a0abab9ec67b77245a85ed9fac25495c
   - enabled: 1

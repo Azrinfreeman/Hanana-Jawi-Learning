@@ -31,6 +31,10 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void ExitApp(){
+        Application.Quit();
+    }
+
     public void ReloadScene()
     {
         StartCoroutine(Reload());

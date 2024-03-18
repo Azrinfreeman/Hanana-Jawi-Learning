@@ -33,9 +33,14 @@ public class atmostController : MonoBehaviour
         {
             stars[i] = GameObject.Find("sunormoon").transform.GetChild(i).GetComponent<Transform>();
             atmost[i] = GameObject.Find("atmost").transform.GetChild(i).GetComponent<Transform>();
-            sound[i] = GameObject.Find("Ambience").transform.GetChild(i).GetComponent<AudioSource>();
+            sound[i] = GameObject
+                .Find("Ambience")
+                .transform
+                .GetChild(i)
+                .GetComponent<AudioSource>();
         }
 
+        /* 25 hjour ssytem
         if (System.DateTime.Now.Hour >= 7 && System.DateTime.Now.Hour <= 19)
         {
             // It's on or after 7 AM!
@@ -47,9 +52,9 @@ public class atmostController : MonoBehaviour
             if (SceneManager.GetActiveScene().name.Equals("FrontMenu"))
             {
                 titleText.color = Color.black;
-                titleText.transform.GetChild(0).GetComponent<Image>().color = Color.black;
+                titleText.transform.GetChild(2).GetComponent<Image>().color = Color.black;
             }
-            Debug.Log(System.DateTime.Now.ToString("morning"));
+            Debug.Log(System.DateTime.Now.ToString());
         }
         else
         { // It's on or after 7 PM!
@@ -64,6 +69,41 @@ public class atmostController : MonoBehaviour
                 titleText.transform.GetChild(0).GetComponent<Image>().color = Color.white;
             }
             Debug.Log(System.DateTime.Now.ToString("evening"));
+        }
+        */
+        Debug.Log("Hour: "+System.DateTime.Now.Hour/12);
+        // 12 hours
+        if (
+            (System.DateTime.Now.Hour / 12)  >= 7 && System.DateTime.Now.ToString().Contains("AM")
+            || (System.DateTime.Now.Hour / 12) < 6 && System.DateTime.Now.ToString().Contains("PM")
+        )
+        {
+            sound[0].Play();
+            stars[0].gameObject.SetActive(true);
+            stars[1].gameObject.SetActive(false);
+            atmost[0].gameObject.SetActive(true);
+            atmost[1].gameObject.SetActive(false);
+            if (SceneManager.GetActiveScene().name.Equals("FrontMenu"))
+            {
+                titleText.color = Color.black;
+                titleText.transform.GetChild(2).GetComponent<Image>().color = Color.black;
+            }
+            Debug.Log(System.DateTime.Now.ToString());
+        }
+        else
+        {
+            // It's on or after 7 PM!
+            sound[1].Play();
+            stars[0].gameObject.SetActive(false);
+            stars[1].gameObject.SetActive(true);
+            atmost[1].gameObject.SetActive(true);
+            atmost[0].gameObject.SetActive(false);
+            if (SceneManager.GetActiveScene().name.Equals("FrontMenu"))
+            {
+                titleText.color = Color.white;
+                titleText.transform.GetChild(2).GetComponent<Image>().color = Color.white;
+            }
+            Debug.Log(System.DateTime.Now.ToString());
         }
     }
 

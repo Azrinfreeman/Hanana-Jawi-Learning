@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.LowLevel;
 using UnityEngine.UI;
 
 public class rewardCollideController : MonoBehaviour
@@ -17,16 +18,27 @@ public class rewardCollideController : MonoBehaviour
     public TextMeshProUGUI text;
     public Slider slider;
 
-
+    public JawapanPrasekolahController jawapan;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        jawapan = GameObject.Find("jawapan").GetComponent<JawapanPrasekolahController>();
         slider = GameObject.Find("sliderpet").GetComponent<Slider>();
         text = GameObject.Find("sliderpet").transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        Debug.Log(PlayerPrefs.GetInt(jawapan.sceneName + "_Reward"));
 
+        StartCoroutine(lateStart());
+
+    }
+
+    IEnumerator lateStart()
+    {
+
+        yield return new WaitForSeconds(1f);
         slider.maxValue = maxCount;
+        count = PlayerPrefs.GetInt(jawapan.sceneName + "_Reward");
         text.text = count.ToString();
     }
 
@@ -42,6 +54,11 @@ public class rewardCollideController : MonoBehaviour
             count++;
             text.text = count.ToString();
             slider.value = count;
+            PlayerPrefs.SetInt(jawapan.sceneName + "_Reward", count);
+            if (!transform.GetChild(3).GetComponent<AudioSource>().isPlaying)
+            {
+                transform.GetChild(3).GetComponent<AudioSource>().Play();
+            }
             if (count == maxCount)
             {
 

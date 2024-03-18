@@ -11,7 +11,8 @@ public class CameraMovement : MonoBehaviour
     private float zoomStep, minCamSize, maxCamSize;
 
     private Vector3 dragOrigin;
-
+    public float zoomOutMin = 6;
+    public float zoomOutMax = 24;
     [SerializeField]
 
     private SpriteRenderer mapRenderer;
@@ -58,20 +59,24 @@ public class CameraMovement : MonoBehaviour
         cam.transform.position = ClampCamera(cam.transform.position);
     }
 
-    public void ZoomPinch(float diff)
+    public void ZoomPinch(float increment)
     {
-        float newSize;
-        if (diff > 0)
-        {
-            newSize = cam.orthographicSize + diff;
-        }
-        else
-        {
-            newSize = cam.orthographicSize - diff;
-        }
-        cam.orthographicSize = Mathf.Clamp(newSize, minCamSize, maxCamSize);
+        /*
+         float newSize;
+         if (diff > 0)
+         {
+             newSize = cam.orthographicSize + diff;
+         }
+         else
+         {
+             newSize = cam.orthographicSize - diff;
+         }
+         cam.orthographicSize = Mathf.Clamp(newSize, minCamSize, maxCamSize);
 
-        cam.transform.position = ClampCamera(cam.transform.position);   //ograniczenie obszaru
+         cam.transform.position = ClampCamera(cam.transform.position);   //ograniczenie obszaru
+         */
+
+        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, zoomOutMin, zoomOutMax);
     }
     public void ZoomIn()
     {
@@ -117,7 +122,7 @@ public class CameraMovement : MonoBehaviour
 
             float diff = currentMagnitude - prevMagnitude;
 
-            ZoomPinch(diff);
+            ZoomPinch(diff * 0.01f);
 
 
         }
