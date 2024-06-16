@@ -7,6 +7,7 @@ public class loadRewardValue : MonoBehaviour
 {
     public TextMeshProUGUI text;
     public rewardCollideController rewardCollider;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -33,6 +33,7 @@ public class JawapanPrasekolahController : MonoBehaviour
     public Transform btnSound;
 
     [Header("Audios")]
+    public AudioSource claps;
     public AudioSource betul;
     public AudioSource salah;
     public AudioSource pop;
@@ -49,9 +50,10 @@ public class JawapanPrasekolahController : MonoBehaviour
 
     [Header("Steps")] //utk kira markah
     public int steps = 1;
-    public int stepsSoalan = 1;
 
-    public int stepsSoalanBetul = 1;
+    //public int stepsSoalan = 1;
+
+    //public int stepsSoalanBetul = 1;
 
     public int markah = 10;
 
@@ -64,8 +66,8 @@ public class JawapanPrasekolahController : MonoBehaviour
         sceneName = SceneManager.GetActiveScene().name;
         bil = transform.childCount;
         steps = 1;
-        stepsSoalan = 1;
-        stepsSoalanBetul = 1;
+        //stepsSoalan = 1;
+        //stepsSoalanBetul = 1;
 
         btnSound = GameObject.Find("btnSound").GetComponent<Transform>();
         jawapanAnim = GetComponent<Animator>();
@@ -80,6 +82,7 @@ public class JawapanPrasekolahController : MonoBehaviour
         betul = GameObject.Find("yay").GetComponent<AudioSource>();
         salah = GameObject.Find("salah").GetComponent<AudioSource>();
         pop = GameObject.Find("pop").GetComponent<AudioSource>();
+        claps = GameObject.Find("claps").GetComponent<AudioSource>();
         timerSlider = GameObject.Find("Slider").GetComponent<Slider>();
         levelDisplay.gameObject.SetActive(false);
         btnSound.gameObject.SetActive(false);
@@ -133,91 +136,92 @@ public class JawapanPrasekolahController : MonoBehaviour
             soalan.questions[randomNumber].GetComponent<Image>().color = new Color32(0, 0, 0, 0);
             //particle system active
             currentTransform
-                .transform
-                .GetChild(1)
+                .transform.GetChild(1)
                 .GetComponent<ParticleSystem>()
-                .transform
-                .gameObject
-                .SetActive(true);
+                .transform.gameObject.SetActive(true);
             ScoreController.instance.scores++;
             if (!betul.isPlaying)
             {
                 pop.Play();
                 betul.Play();
+                claps.Play();
                 //BUTTERFLY VISIBLE
                 if (isGamelvl5)
                 {
                     soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(5)
-                        .transform
-                        .gameObject
-                        .SetActive(true);
+                        .transform.GetChild(5)
+                        .transform.gameObject.SetActive(true);
 
-                    soalan
-                        .questions[randomNumber]
-                        .transform
-                        .GetChild(5)
-                        .GetChild(0)
-                        .GetComponent<PatrolController>()
-                        .speed = 0f;
-
-                    soalan
-                        .questions[randomNumber]
-                        .transform
-                        .GetChild(5)
-                        .GetChild(1)
-                        .GetComponent<PatrolController>()
-                        .speed = 0f;
+                    for (
+                        int i = 0;
+                        i < soalan.questions[randomNumber].transform.GetChild(5).childCount;
+                        i++
+                    )
+                    {
+                        soalan
+                            .questions[randomNumber]
+                            .transform.GetChild(5)
+                            .GetChild(i)
+                            .GetComponent<PatrolController>()
+                            .speed = 0f;
+                    }
                 }
                 else
                 {
                     soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(3)
-                        .transform
-                        .gameObject
-                        .SetActive(true);
+                        .transform.GetChild(3)
+                        .transform.gameObject.SetActive(true);
 
-                    soalan
-                        .questions[randomNumber]
-                        .transform
-                        .GetChild(3)
-                        .GetChild(0)
-                        .GetComponent<PatrolController>()
-                        .speed = 0f;
-
-                    soalan
-                        .questions[randomNumber]
-                        .transform
-                        .GetChild(3)
-                        .GetChild(1)
-                        .GetComponent<PatrolController>()
-                        .speed = 0f;
+                    for (
+                        int i = 0;
+                        i < soalan.questions[randomNumber].transform.GetChild(3).childCount;
+                        i++
+                    )
+                    {
+                        soalan
+                            .questions[randomNumber]
+                            .transform.GetChild(3)
+                            .GetChild(i)
+                            .GetComponent<PatrolController>()
+                            .speed = 0f;
+                    }
                 }
             }
 
-            yield return new WaitForSeconds(1.8f);
+            yield return new WaitForSeconds(1.0f);
 
             if (isGamelvl5)
             {
-                soalan
-                    .questions[randomNumber]
-                    .transform
-                    .GetChild(5)
-                    .GetChild(0)
-                    .GetComponent<PatrolController>()
-                    .speed = 4f;
-
-                soalan
-                    .questions[randomNumber]
-                    .transform
-                    .GetChild(5)
-                    .GetChild(1)
-                    .GetComponent<PatrolController>()
-                    .speed = 4f;
+                if (timeRemaining > 7 && timeRemaining < 10)
+                {
+                    markah = 10;
+                }
+                else if (timeRemaining > 3 && timeRemaining < 7)
+                {
+                    markah = markah - (10 - (int)timeRemaining);
+                }
+                else if (timeRemaining < 3)
+                {
+                    markah = 2;
+                }
+                //mula animation tambah coin/markah
+                MarkahTerkumpulController.instance.startAdd(markah);
+                yield return new WaitForSeconds(1.2f);
+                for (
+                    int i = 0;
+                    i < soalan.questions[randomNumber].transform.GetChild(5).childCount;
+                    i++
+                )
+                {
+                    soalan
+                        .questions[randomNumber]
+                        .transform.GetChild(5)
+                        .GetChild(i)
+                        .GetComponent<PatrolController>()
+                        .speed = 4f;
+                }
             }
             else
             {
@@ -236,28 +240,26 @@ public class JawapanPrasekolahController : MonoBehaviour
                 //mula animation tambah coin/markah
                 MarkahTerkumpulController.instance.startAdd(markah);
                 yield return new WaitForSeconds(1.2f);
-                soalan
-                    .questions[randomNumber]
-                    .transform
-                    .GetChild(3)
-                    .GetChild(0)
-                    .GetComponent<PatrolController>()
-                    .speed = 4f;
-
-                soalan
-                    .questions[randomNumber]
-                    .transform
-                    .GetChild(3)
-                    .GetChild(1)
-                    .GetComponent<PatrolController>()
-                    .speed = 4f;
+                //butterfly moving
+                for (
+                    int i = 0;
+                    i < soalan.questions[randomNumber].transform.GetChild(3).childCount;
+                    i++
+                )
+                {
+                    soalan
+                        .questions[randomNumber]
+                        .transform.GetChild(3)
+                        .GetChild(i)
+                        .GetComponent<PatrolController>()
+                        .speed = 4f;
+                }
             }
             //add to steps if correct
-            steps++;
-            stepsSoalanBetul++;
-            yield return new WaitForSeconds(4f);
+            //steps++;
+            //stepsSoalanBetul++;
+            yield return new WaitForSeconds(2f);
         }
-        
         //check if WRONG
         else
         {
@@ -303,7 +305,7 @@ public class JawapanPrasekolahController : MonoBehaviour
         btnSound.transform.gameObject.SetActive(false);
         //StartRandom();
         questionlist.RemoveAt(t);
-
+        Debug.Log("questlion list removed");
         if (questionlist.Count < 3)
         {
             GameObject.Find("btnMula").GetComponent<Button>().interactable = false;
@@ -314,7 +316,7 @@ public class JawapanPrasekolahController : MonoBehaviour
             }
             winDisplay.gameObject.SetActive(true);
         }
-        stepsSoalan++;
+        // stepsSoalan++;
         //}
         /*
         else
@@ -359,12 +361,9 @@ public class JawapanPrasekolahController : MonoBehaviour
             soalan.questions[randomNumber].GetComponent<Image>().color = new Color32(0, 0, 0, 0);
             //particle system active
             currentTransform
-                .transform
-                .GetChild(1)
+                .transform.GetChild(1)
                 .GetComponent<ParticleSystem>()
-                .transform
-                .gameObject
-                .SetActive(true);
+                .transform.gameObject.SetActive(true);
             ScoreController.instance.scores++;
             if (!betul.isPlaying)
             {
@@ -375,24 +374,19 @@ public class JawapanPrasekolahController : MonoBehaviour
                 {
                     soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(5)
-                        .transform
-                        .gameObject
-                        .SetActive(true);
+                        .transform.GetChild(5)
+                        .transform.gameObject.SetActive(true);
 
                     soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(5)
+                        .transform.GetChild(5)
                         .GetChild(0)
                         .GetComponent<PatrolController>()
                         .speed = 0f;
 
                     soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(5)
+                        .transform.GetChild(5)
                         .GetChild(1)
                         .GetComponent<PatrolController>()
                         .speed = 0f;
@@ -401,25 +395,34 @@ public class JawapanPrasekolahController : MonoBehaviour
                 {
                     soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(3)
-                        .transform
-                        .gameObject
-                        .SetActive(true);
+                        .transform.GetChild(3)
+                        .transform.gameObject.SetActive(true);
 
                     soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(3)
+                        .transform.GetChild(3)
                         .GetChild(0)
                         .GetComponent<PatrolController>()
                         .speed = 0f;
 
                     soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(3)
+                        .transform.GetChild(3)
                         .GetChild(1)
+                        .GetComponent<PatrolController>()
+                        .speed = 0f;
+
+                    soalan
+                        .questions[randomNumber]
+                        .transform.GetChild(3)
+                        .GetChild(2)
+                        .GetComponent<PatrolController>()
+                        .speed = 0f;
+
+                    soalan
+                        .questions[randomNumber]
+                        .transform.GetChild(3)
+                        .GetChild(3)
                         .GetComponent<PatrolController>()
                         .speed = 0f;
                 }
@@ -431,16 +434,14 @@ public class JawapanPrasekolahController : MonoBehaviour
             {
                 soalan
                     .questions[randomNumber]
-                    .transform
-                    .GetChild(5)
+                    .transform.GetChild(5)
                     .GetChild(0)
                     .GetComponent<PatrolController>()
                     .speed = 4f;
 
                 soalan
                     .questions[randomNumber]
-                    .transform
-                    .GetChild(5)
+                    .transform.GetChild(5)
                     .GetChild(1)
                     .GetComponent<PatrolController>()
                     .speed = 4f;
@@ -464,23 +465,21 @@ public class JawapanPrasekolahController : MonoBehaviour
                 yield return new WaitForSeconds(1.2f);
                 soalan
                     .questions[randomNumber]
-                    .transform
-                    .GetChild(3)
+                    .transform.GetChild(3)
                     .GetChild(0)
                     .GetComponent<PatrolController>()
                     .speed = 4f;
 
                 soalan
                     .questions[randomNumber]
-                    .transform
-                    .GetChild(3)
+                    .transform.GetChild(3)
                     .GetChild(1)
                     .GetComponent<PatrolController>()
                     .speed = 4f;
             }
             //add to steps if correct
             steps++;
-            stepsSoalanBetul++;
+            //stepsSoalanBetul++;
             yield return new WaitForSeconds(4f);
         }
         else
@@ -538,7 +537,7 @@ public class JawapanPrasekolahController : MonoBehaviour
             }
             winDisplay.gameObject.SetActive(true);
         }
-        stepsSoalan++;
+        // stepsSoalan++;
     }
 
     IEnumerator timeRunningOut()
@@ -611,7 +610,7 @@ public class JawapanPrasekolahController : MonoBehaviour
 
             winDisplay.gameObject.SetActive(true);
         }
-        stepsSoalan++;
+        // stepsSoalan++;
     }
 
     public void ClickAnswer()
@@ -636,16 +635,14 @@ public class JawapanPrasekolahController : MonoBehaviour
             if (
                 !soalan
                     .questions[randomNumber]
-                    .transform
-                    .GetChild(2)
+                    .transform.GetChild(2)
                     .GetComponent<AudioSource>()
                     .isPlaying
             )
             {
                 soalan
                     .questions[randomNumber]
-                    .transform
-                    .GetChild(2)
+                    .transform.GetChild(2)
                     .GetComponent<AudioSource>()
                     .Play();
             }
@@ -655,16 +652,14 @@ public class JawapanPrasekolahController : MonoBehaviour
             if (
                 !soalan
                     .questions[randomNumber]
-                    .transform
-                    .GetChild(3)
+                    .transform.GetChild(3)
                     .GetComponent<AudioSource>()
                     .isPlaying
             )
             {
                 soalan
                     .questions[randomNumber]
-                    .transform
-                    .GetChild(3)
+                    .transform.GetChild(3)
                     .GetComponent<AudioSource>()
                     .Play();
             }
@@ -672,16 +667,14 @@ public class JawapanPrasekolahController : MonoBehaviour
             if (
                 !soalan
                     .questions[randomNumber]
-                    .transform
-                    .GetChild(4)
+                    .transform.GetChild(4)
                     .GetComponent<AudioSource>()
                     .isPlaying
             )
             {
                 soalan
                     .questions[randomNumber]
-                    .transform
-                    .GetChild(4)
+                    .transform.GetChild(4)
                     .GetComponent<AudioSource>()
                     .Play();
             }
@@ -689,16 +682,14 @@ public class JawapanPrasekolahController : MonoBehaviour
             if (
                 !soalan
                     .questions[randomNumber]
-                    .transform
-                    .GetChild(2)
+                    .transform.GetChild(2)
                     .GetComponent<AudioSource>()
                     .isPlaying
             )
             {
                 soalan
                     .questions[randomNumber]
-                    .transform
-                    .GetChild(2)
+                    .transform.GetChild(2)
                     .GetComponent<AudioSource>()
                     .Play();
             }
@@ -736,7 +727,7 @@ public class JawapanPrasekolahController : MonoBehaviour
                 //   "Level " + level.levels;
                 levelDisplay.GetComponent<Animator>().Play("loadinglevel");
                 level.levels++;
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(2.5f);
                 // jawapanAnim.Play("showupballoon");
             }
 
@@ -753,29 +744,44 @@ public class JawapanPrasekolahController : MonoBehaviour
             // if game level 5 or not
             if (!isGamelvl5)
             {
+                /*
                 if (!GameObject.Find("cari").GetComponent<AudioSource>().isPlaying)
                 {
                     GameObject.Find("cari").GetComponent<AudioSource>().Play();
-                    yield return new WaitForSeconds(2f);
+                    while (GameObject.Find("cari").GetComponent<AudioSource>().isPlaying)
+                    {
+                        yield return null;
+                    }
+                    yield return new WaitForSeconds(0.8f);
                 }
-
+                */
+                yield return new WaitForSeconds(0.8f);
                 if (
                     !soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(2)
+                        .transform.GetChild(2)
                         .GetComponent<AudioSource>()
                         .isPlaying
                 )
                 {
                     soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(2)
+                        .transform.GetChild(2)
                         .GetComponent<AudioSource>()
                         .Play();
+
+                    while (
+                        soalan
+                            .questions[randomNumber]
+                            .transform.GetChild(2)
+                            .GetComponent<AudioSource>()
+                            .isPlaying
+                    )
+                    {
+                        yield return null;
+                    }
                 }
-                yield return new WaitForSeconds(2.3f);
+
                 btnSound.transform.gameObject.SetActive(true);
                 for (int i = 0; i < 3; i++)
                 {
@@ -786,60 +792,61 @@ public class JawapanPrasekolahController : MonoBehaviour
             }
             else
             {
+                /*
                 if (!GameObject.Find("cari").GetComponent<AudioSource>().isPlaying)
                 {
                     GameObject.Find("cari").GetComponent<AudioSource>().Play();
-                    yield return new WaitForSeconds(2f);
+                    while (GameObject.Find("cari").GetComponent<AudioSource>().isPlaying)
+                    {
+                        yield return null;
+                    }
+                    yield return new WaitForSeconds(0.8f);
                 }
-
-                if (
+                */
+                yield return new WaitForSeconds(0.8f);
+                /*if (
                     !soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(3)
+                        .transform.GetChild(3)
                         .GetComponent<AudioSource>()
                         .isPlaying
                 )
                 {
                     soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(3)
+                        .transform.GetChild(3)
                         .GetComponent<AudioSource>()
                         .Play();
                 }
                 yield return new WaitForSeconds(1.2f);
-                if (
+                */
+                /*if (
                     !soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(4)
+                        .transform.GetChild(4)
                         .GetComponent<AudioSource>()
                         .isPlaying
                 )
                 {
                     soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(4)
+                        .transform.GetChild(4)
                         .GetComponent<AudioSource>()
                         .Play();
                 }
                 yield return new WaitForSeconds(1.2f);
-
+                */
                 if (
                     !soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(2)
+                        .transform.GetChild(2)
                         .GetComponent<AudioSource>()
                         .isPlaying
                 )
                 {
                     soalan
                         .questions[randomNumber]
-                        .transform
-                        .GetChild(2)
+                        .transform.GetChild(2)
                         .GetComponent<AudioSource>()
                         .Play();
                 }
@@ -912,14 +919,16 @@ public class JawapanPrasekolahController : MonoBehaviour
             }
         }
 
+        /*
         if (stepsSoalanBetul > 5)
         {
             failedDisplay.gameObject.SetActive(true);
         }
+        */
     }
 
     public void resetStep()
     {
-        stepsSoalan = 1;
+        //stepsSoalan = 1;
     }
 }

@@ -13,13 +13,13 @@ public class rewardCollideController : MonoBehaviour
     {
         instance = this;
     }
+
     public int count;
     public int maxCount = 4;
     public TextMeshProUGUI text;
     public Slider slider;
 
     public JawapanPrasekolahController jawapan;
-
 
     // Start is called before the first frame update
     void Start()
@@ -30,16 +30,15 @@ public class rewardCollideController : MonoBehaviour
         Debug.Log(PlayerPrefs.GetInt(jawapan.sceneName + "_Reward"));
 
         StartCoroutine(lateStart());
-
     }
 
     IEnumerator lateStart()
     {
-
         yield return new WaitForSeconds(1f);
         slider.maxValue = maxCount;
         count = PlayerPrefs.GetInt(jawapan.sceneName + "_Reward");
         text.text = count.ToString();
+        slider.value = count;
     }
 
     // Update is called once per frame
@@ -61,9 +60,10 @@ public class rewardCollideController : MonoBehaviour
             }
             if (count == maxCount)
             {
-
+                count = 0;
+                slider.value = count;
+                PlayerPrefs.SetInt(jawapan.sceneName + "_Reward", count);
                 RewardController.instance.DisplayReward();
-
             }
         }
     }

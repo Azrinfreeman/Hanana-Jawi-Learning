@@ -18,7 +18,6 @@ public class loadSoalan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = jawapan.stepsSoalanBetul.ToString() + "/" + "5";
+        // text.text = jawapan.stepsSoalanBetul.ToString() + "/" + "5";
     }
-
 }

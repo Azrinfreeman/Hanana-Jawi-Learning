@@ -56,4 +56,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ZOo/zoolevel.unity
     guid: 6b38acbc5f8334444b9950d9f302239e
+  - enabled: 1
+    path: Assets/Scenes/ZOo/zoolevel2.unity
+    guid: 5c6be31195de891418fe7a590c10ba0f
+  - enabled: 1
+    path: Assets/Scenes/ZOo/zoolevel3.unity
+    guid: 73b56c0fd25b3984bad8324dbe190e2f
   m_configObjects: {}

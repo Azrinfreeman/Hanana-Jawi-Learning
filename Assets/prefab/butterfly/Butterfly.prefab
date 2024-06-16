@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4352847772639781196}
   m_Layer: 5
   m_Name: Butterfly
-  m_TagString: Untagged
+  m_TagString: butterfly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,6 +80,8 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0}
   isButterfly: 1
   isFish: 0
+  isMammals: 0
+  isSprite: 0
 --- !u!1 &1346582137972804122
 GameObject:
   m_ObjectHideFlags: 0

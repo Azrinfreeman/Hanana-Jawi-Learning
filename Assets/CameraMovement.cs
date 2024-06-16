@@ -7,17 +7,23 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField]
     private Camera cam;
+
     [SerializeField]
-    private float zoomStep, minCamSize, maxCamSize;
+    private float zoomStep,
+        minCamSize,
+        maxCamSize;
 
     private Vector3 dragOrigin;
     public float zoomOutMin = 6;
     public float zoomOutMax = 24;
-    [SerializeField]
 
+    [SerializeField]
     private SpriteRenderer mapRenderer;
 
-    private float mapMinX, mapMaxX, mapMinY, mapMaxY;
+    private float mapMinX,
+        mapMaxX,
+        mapMinY,
+        mapMaxY;
 
     void Awake()
     {
@@ -26,16 +32,10 @@ public class CameraMovement : MonoBehaviour
 
         mapMinY = mapRenderer.transform.position.y - mapRenderer.bounds.size.y / 2f;
         mapMaxY = mapRenderer.transform.position.y + mapRenderer.bounds.size.y / 2f;
-
-
     }
-
 
     // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    void Start() { }
 
     // Update is called once per frame
     void Update()
@@ -44,6 +44,7 @@ public class CameraMovement : MonoBehaviour
         PanCamera();
         //        Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
     }
+
     void Zoom()
     {
         //PC
@@ -76,14 +77,19 @@ public class CameraMovement : MonoBehaviour
          cam.transform.position = ClampCamera(cam.transform.position);   //ograniczenie obszaru
          */
 
-        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, zoomOutMin, zoomOutMax);
+        Camera.main.orthographicSize = Mathf.Clamp(
+            Camera.main.orthographicSize - increment,
+            zoomOutMin,
+            zoomOutMax
+        );
     }
+
     public void ZoomIn()
     {
         float newSize = cam.orthographicSize - zoomStep;
         cam.orthographicSize = Mathf.Clamp(newSize, minCamSize, maxCamSize);
 
-        cam.transform.position = ClampCamera(cam.transform.position);   //ograniczenie obszaru
+        cam.transform.position = ClampCamera(cam.transform.position); //ograniczenie obszaru
     }
 
     public void ZoomOut()
@@ -92,13 +98,13 @@ public class CameraMovement : MonoBehaviour
         //
         cam.orthographicSize = Mathf.Clamp(newSize, minCamSize, maxCamSize);
 
-        if (cam.orthographicSize > 23)
+        if (cam.orthographicSize > 36)
         {
-            cam.orthographicSize = 24;
+            cam.orthographicSize = 38;
         }
         cam.transform.position = ClampCamera(cam.transform.position); //ograniczenie obszaru
-
     }
+
     private void PanCamera()
     {
         //save posotion of mouse in world space when drag
@@ -106,7 +112,6 @@ public class CameraMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             dragOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
-
         }
         //for pinch zoom hand
         if (Input.touchCount == 2)
@@ -123,21 +128,16 @@ public class CameraMovement : MonoBehaviour
             float diff = currentMagnitude - prevMagnitude;
 
             ZoomPinch(diff * 0.01f);
-
-
         }
         //calculate drag origin and new postiion
         if (Input.GetMouseButton(0))
         {
-
             Vector3 difference = dragOrigin - cam.ScreenToWorldPoint(Input.mousePosition);
             //print("origin " + dragOrigin + " new poistion " + cam.ScreenToWorldPoint(Input.mousePosition) + " =differe" + difference);
             //move the camera by distaance;
             cam.transform.position = ClampCamera(cam.transform.position + difference);
-
         }
     }
-
 
     private Vector3 ClampCamera(Vector3 targetPosition)
     {
@@ -155,4 +155,3 @@ public class CameraMovement : MonoBehaviour
         return new Vector3(newX, newY, targetPosition.z);
     }
 }
-
