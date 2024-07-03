@@ -262476,7 +262476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  maxCount: 10
+  maxCount: 100
   text: {fileID: 0}
   slider: {fileID: 0}
   jawapan: {fileID: 0}

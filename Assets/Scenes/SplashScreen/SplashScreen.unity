@@ -596,6 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febbf05960a3b1a4695c803d7a3deaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: 
   isSplashScreen: 1
   duration: 4
   startAudio: {fileID: 1591283837}
@@ -838,7 +839,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 014a064a87fc8db4e9c28a158597215b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.347
+  m_Volume: 0.911
   m_Pitch: 1
   Loop: 0
   Mute: 0
