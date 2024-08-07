@@ -22,6 +22,8 @@ public class PetController : MonoBehaviour
 
     public string namaDiberi;
 
+    public AudioSource audiosfx;
+
     [Header("References")]
     public Image picture;
     public Animator details;
@@ -29,12 +31,23 @@ public class PetController : MonoBehaviour
     public Button btnConfirmChange;
     public Transform tetapanMenu;
 
+    public Button AudioButton;
+
     void Awake()
     {
         picture = GameObject.Find("picture").GetComponent<Image>();
         details = GameObject.Find("Details").GetComponent<Animator>();
         btnConfirmChange = GameObject.Find("btnConfirm").GetComponent<Button>();
+        AudioButton = GameObject.Find("AudioSfx").GetComponent<Button>();
         tetapanMenu = GameObject.Find("TetapanMenu").GetComponent<Transform>();
+    }
+
+    public void PlaySound(AudioSource audio)
+    {
+        if (!audio.isPlaying)
+        {
+            audio.Play();
+        }
     }
 
     // Start is called before the first frame update
@@ -51,13 +64,10 @@ public class PetController : MonoBehaviour
 
         if (
             tetapanMenu
-                .transform
-                .GetChild(1)
-                .transform
-                .GetChild(2)
+                .transform.GetChild(1)
+                .transform.GetChild(2)
                 .GetComponent<TMP_InputField>()
-                .text
-                .Equals("")
+                .text.Equals("")
         )
         {
             btnConfirmChange.interactable = false;
@@ -71,10 +81,8 @@ public class PetController : MonoBehaviour
     public void WriteName()
     {
         string name = tetapanMenu
-            .transform
-            .GetChild(1)
-            .transform
-            .GetChild(2)
+            .transform.GetChild(1)
+            .transform.GetChild(2)
             .GetComponent<TMP_InputField>()
             .text;
         Debug.Log(name);
@@ -83,10 +91,8 @@ public class PetController : MonoBehaviour
         PlayerPrefs.SetString(petname, name);
 
         tetapanMenu
-            .transform
-            .GetChild(1)
-            .transform
-            .GetChild(2)
+            .transform.GetChild(1)
+            .transform.GetChild(2)
             .GetComponent<TMP_InputField>()
             .text = "";
         tetapanMenu.gameObject.SetActive(false);
@@ -105,15 +111,12 @@ public class PetController : MonoBehaviour
                 {
                     PetsManager.instance.pet.Add(hit.transform.GetComponent<PetController>());
                     PetsManager
-                        .instance
-                        .pet[PetsManager.instance.pet.Count - 1]
-                        .transform
-                        .GetChild(0)
-                        .transform
-                        .gameObject
-                        .SetActive(true);
+                        .instance.pet[PetsManager.instance.pet.Count - 1]
+                        .transform.GetChild(0)
+                        .transform.gameObject.SetActive(true);
                     Debug.Log(hit.collider.name);
                     btnConfirmChange.onClick.RemoveAllListeners();
+                    AudioButton.onClick.RemoveAllListeners();
                     //Do your thing.
                     Debug.Log("This is a = " + petname);
                     details.SetBool("istrue", false);
@@ -133,6 +136,13 @@ public class PetController : MonoBehaviour
                     }
 
                     btnConfirmChange.onClick.AddListener(() => WriteName());
+                    AudioButton.onClick.AddListener(
+                        () =>
+                            PlaySound(
+                                hit.collider.transform.parent.GetChild(1)
+                                    .GetComponent<AudioSource>()
+                            )
+                    );
                 }
             }
             else
@@ -140,13 +150,9 @@ public class PetController : MonoBehaviour
                 for (int i = 0; i < PetsManager.instance.pet.Count; i++)
                 {
                     PetsManager
-                        .instance
-                        .pet[i]
-                        .transform
-                        .GetChild(0)
-                        .transform
-                        .gameObject
-                        .SetActive(false);
+                        .instance.pet[i]
+                        .transform.GetChild(0)
+                        .transform.gameObject.SetActive(false);
                 }
             }
         }

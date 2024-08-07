@@ -28,7 +28,10 @@ public class QuestionPrasekolahController : MonoBehaviour
                 if (jawapan.transform.GetChild(i).gameObject.activeSelf)
                 {
                     Debug.Log(jawapan.transform.GetChild(i).gameObject.name);
-                    questions.Add(jawapan.transform.GetChild(i));
+                    if (questions.Count != 3)
+                    {
+                        questions.Add(jawapan.transform.GetChild(i));
+                    }
                 }
             }
             //pick the item using random number and display answer to the question

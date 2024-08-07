@@ -49,7 +49,9 @@ public class rewardCollideController : MonoBehaviour
         if (other.tag.Equals("butterfly"))
         {
             //Debug.Log("reward");
+
             other.transform.parent.gameObject.SetActive(false);
+
             count++;
             text.text = count.ToString();
             slider.value = count;

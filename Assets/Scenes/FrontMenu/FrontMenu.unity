@@ -1336,6 +1336,7 @@ MonoBehaviour:
   - {fileID: 905802523}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 0
@@ -6458,6 +6459,7 @@ MonoBehaviour:
   - {fileID: 879722938}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 0
@@ -14111,7 +14113,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Still in development 0.8.7
+  m_text: v0.9.0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c05364a10f989ef48a9b029a93403b0a, type: 2}
   m_sharedMaterial: {fileID: -1447960232790725288, guid: c05364a10f989ef48a9b029a93403b0a, type: 2}
@@ -14145,7 +14147,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -18636,6 +18638,7 @@ MonoBehaviour:
   - {fileID: 905802523}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 0
@@ -33864,6 +33867,7 @@ MonoBehaviour:
   - {fileID: 879722938}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 0

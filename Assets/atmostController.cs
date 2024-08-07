@@ -23,7 +23,7 @@ public class atmostController : MonoBehaviour
         stars = new Transform[2];
         atmost = new Transform[2];
         sound = new AudioSource[2];
-        Debug.Log(SceneManager.GetActiveScene().name);
+        //    Debug.Log(SceneManager.GetActiveScene().name);
         if (SceneManager.GetActiveScene().name.Equals("FrontMenu"))
         {
             titleText = GameObject.Find("title").GetComponent<TextMeshProUGUI>();
@@ -35,8 +35,7 @@ public class atmostController : MonoBehaviour
             atmost[i] = GameObject.Find("atmost").transform.GetChild(i).GetComponent<Transform>();
             sound[i] = GameObject
                 .Find("Ambience")
-                .transform
-                .GetChild(i)
+                .transform.GetChild(i)
                 .GetComponent<AudioSource>();
         }
 
@@ -71,10 +70,10 @@ public class atmostController : MonoBehaviour
             Debug.Log(System.DateTime.Now.ToString("evening"));
         }
         */
-        Debug.Log("Hour: "+System.DateTime.Now.Hour/12);
+        //        Debug.Log("Hour: "+System.DateTime.Now.Hour/12);
         // 12 hours
         if (
-            (System.DateTime.Now.Hour / 12)  >= 7 && System.DateTime.Now.ToString().Contains("AM")
+            (System.DateTime.Now.Hour / 12) >= 7 && System.DateTime.Now.ToString().Contains("AM")
             || (System.DateTime.Now.Hour / 12) < 6 && System.DateTime.Now.ToString().Contains("PM")
         )
         {

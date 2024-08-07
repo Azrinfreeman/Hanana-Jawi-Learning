@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class PatrolController : MonoBehaviour
 {
+    [Header("Properties")]
     public float speed;
     private float waitTime;
     public float startWaitTime;
@@ -14,6 +15,9 @@ public class PatrolController : MonoBehaviour
 
     public Vector2 oldPosition;
     public Vector2 newPosition;
+
+    [Header("default position")]
+    public Vector2 defaultPosition;
 
     [Header("bool")]
     public bool isButterfly;
@@ -31,6 +35,7 @@ public class PatrolController : MonoBehaviour
         oldPosition = transform.position;
         if (isButterfly)
         {
+            defaultPosition = transform.position;
             moveSpots = new Transform[1];
             moveSpots[0] = GameObject.Find("goto").transform.GetComponent<Transform>();
         }
@@ -83,12 +88,10 @@ public class PatrolController : MonoBehaviour
         {
             if (oldPosition.x > newPosition.x)
             {
-
                 GetComponent<SpriteRenderer>().flipX = false;
             }
             else
             {
-
                 GetComponent<SpriteRenderer>().flipX = true;
             }
         }
@@ -99,7 +102,6 @@ public class PatrolController : MonoBehaviour
     {
         if (moveSpots.Any())
         {
-
             newPosition = moveSpots[randomSpot].position;
             transform.position = Vector2.MoveTowards(
                 transform.position,

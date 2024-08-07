@@ -100,12 +100,15 @@ public class JawapanPrasekolahController : MonoBehaviour
     IEnumerator ChooseAnswer()
     {
         startTimer = false;
+        //disable the sound button
+        GameObject.Find("btnSound").GetComponent<Button>().interactable = false;
         //iftheres time
         //if (timeRemaining > 0)
         //{
         //remove in list
         int t = EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex();
 
+        Debug.Log("T: " + t);
         //assign the touch selected to a variable
         GameObject currentTransform = EventSystem.current.currentSelectedGameObject.gameObject;
         //disable the buttons
@@ -256,9 +259,19 @@ public class JawapanPrasekolahController : MonoBehaviour
                 }
             }
             //add to steps if correct
-            //steps++;
+            steps++;
             //stepsSoalanBetul++;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
+
+            //remove the gameobect and list
+            questionlist.RemoveAt(t);
+            yield return new WaitForSeconds(1f);
+
+            //EventSystem.current.currentSelectedGameObject.transform.SetParent(null);
+            //EventSystem.current.currentSelectedGameObject.transform.gameObject.SetActive(false);
+            currentTransform.transform.SetParent(null);
+            currentTransform.SetActive(false);
+            Debug.Log("questlion list removed");
         }
         //check if WRONG
         else
@@ -285,7 +298,7 @@ public class JawapanPrasekolahController : MonoBehaviour
         }
         for (int i = 0; i < 3; i++)
         {
-            Debug.Log(soalan.questions[i].gameObject.GetComponent<Button>());
+            //            Debug.Log(soalan.questions[i].gameObject.GetComponent<Button>());
             soalan.questions[i].gameObject.GetComponent<Button>().enabled = true;
         }
         for (int i = 0; i < soalan.questions.Count; i++)
@@ -304,8 +317,9 @@ public class JawapanPrasekolahController : MonoBehaviour
         GameObject.Find("btnMula").GetComponent<Button>().interactable = true;
         btnSound.transform.gameObject.SetActive(false);
         //StartRandom();
-        questionlist.RemoveAt(t);
-        Debug.Log("questlion list removed");
+
+
+
         if (questionlist.Count < 3)
         {
             GameObject.Find("btnMula").GetComponent<Button>().interactable = false;
@@ -699,6 +713,11 @@ public class JawapanPrasekolahController : MonoBehaviour
     IEnumerator StartingRandom()
     {
         GameObject.Find("btnMula").GetComponent<Button>().interactable = false;
+        GameObject
+            .Find("btnMula")
+            .transform.parent.GetChild(1)
+            .GetComponent<Button>()
+            .interactable = true;
 
         timeRemaining = 10f;
         timerSlider.value = timeRemaining;
