@@ -323,12 +323,17 @@ public class JawapanPrasekolahController : MonoBehaviour
         if (questionlist.Count < 3)
         {
             GameObject.Find("btnMula").GetComponent<Button>().interactable = false;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.5f);
             if (steps > PlayerPrefs.GetInt(sceneName + "HighScore") && steps > 1)
             {
                 PlayerPrefs.SetInt(sceneName + "HighScore", steps);
             }
-            winDisplay.gameObject.SetActive(true);
+            //show win menu
+            //winDisplay.gameObject.SetActive(true);
+
+            //restart scene seamelessly
+            PlayerPrefs.SetInt("Dialog_" + SceneManager.GetActiveScene().name, 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         // stepsSoalan++;
         //}

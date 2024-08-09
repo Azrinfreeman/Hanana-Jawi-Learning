@@ -45,7 +45,10 @@ public class SceneController : MonoBehaviour
             if (!GameObject.Find("cari").GetComponent<AudioSource>().isPlaying)
             {
                 yield return new WaitForSeconds(1f);
-                GameObject.Find("cari").GetComponent<AudioSource>().Play();
+                if (PlayerPrefs.GetInt("Dialog_" + SceneManager.GetActiveScene().name) == 0)
+                {
+                    GameObject.Find("cari").GetComponent<AudioSource>().Play();
+                }
             }
         }
     }

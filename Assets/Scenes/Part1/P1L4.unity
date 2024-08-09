@@ -51740,6 +51740,7 @@ MonoBehaviour:
   - {fileID: 2068234466}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -117215,6 +117216,7 @@ MonoBehaviour:
   - {fileID: 2068234466}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -129987,6 +129989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1028348371}
   - component: {fileID: 1028348372}
+  - component: {fileID: 1028348373}
   m_Layer: 5
   m_Name: DialogParent
   m_TagString: Untagged
@@ -130035,6 +130038,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1028348373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028348370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5868da4aa92dbc4429fa23aa10d54a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1035235886
 GameObject:
   m_ObjectHideFlags: 0
@@ -130281,6 +130296,7 @@ MonoBehaviour:
   moveSpots: []
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 0
@@ -142818,6 +142834,7 @@ MonoBehaviour:
   - {fileID: 1870285335}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -148653,6 +148670,7 @@ MonoBehaviour:
   - {fileID: 2068234466}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -150956,6 +150974,7 @@ MonoBehaviour:
   moveSpots: []
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -152521,6 +152540,7 @@ MonoBehaviour:
   moveSpots: []
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -194245,6 +194265,7 @@ MonoBehaviour:
   - {fileID: 1870285335}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -210197,6 +210218,7 @@ MonoBehaviour:
   moveSpots: []
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -220845,6 +220867,7 @@ MonoBehaviour:
   - {fileID: 1392186866}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1

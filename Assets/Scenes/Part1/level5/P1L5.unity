@@ -6465,6 +6465,7 @@ MonoBehaviour:
   - {fileID: 1068107789}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -13970,6 +13971,7 @@ MonoBehaviour:
   - {fileID: 685116431}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -61111,6 +61113,7 @@ MonoBehaviour:
   moveSpots: []
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 0
@@ -111255,6 +111258,7 @@ MonoBehaviour:
   moveSpots: []
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 0
@@ -160474,6 +160478,7 @@ MonoBehaviour:
   - {fileID: 685116431}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -209576,6 +209581,7 @@ MonoBehaviour:
   - {fileID: 1068107789}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 1
   isMammals: 0
@@ -220538,6 +220544,7 @@ MonoBehaviour:
   moveSpots: []
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 0
@@ -331416,6 +331423,7 @@ MonoBehaviour:
   - {fileID: 1068107789}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 0
@@ -331560,6 +331568,7 @@ MonoBehaviour:
   - {fileID: 446587016}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -333663,6 +333672,7 @@ MonoBehaviour:
   - {fileID: 685116431}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 1
   isMammals: 0
@@ -340522,6 +340532,7 @@ MonoBehaviour:
   - {fileID: 1068107789}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -400179,6 +400190,7 @@ MonoBehaviour:
   - {fileID: 446587016}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 1
   isMammals: 0
@@ -421697,6 +421709,7 @@ MonoBehaviour:
   moveSpots: []
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 0
@@ -428963,6 +428976,7 @@ MonoBehaviour:
   - {fileID: 1068107789}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -529845,6 +529859,7 @@ MonoBehaviour:
   - {fileID: 1068107789}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -568411,6 +568426,7 @@ MonoBehaviour:
   - {fileID: 446587016}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -603103,6 +603119,7 @@ MonoBehaviour:
   - {fileID: 685116431}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -640165,6 +640182,7 @@ MonoBehaviour:
   - {fileID: 446587016}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -642393,6 +642411,7 @@ MonoBehaviour:
   - {fileID: 446587016}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 1
   isMammals: 0
@@ -659109,6 +659128,7 @@ MonoBehaviour:
   moveSpots: []
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -669972,6 +669992,7 @@ MonoBehaviour:
   - {fileID: 446587016}
   oldPosition: {x: 0, y: 0}
   newPosition: {x: 0, y: 0}
+  defaultPosition: {x: 0, y: 0}
   isButterfly: 0
   isFish: 0
   isMammals: 1
@@ -670450,6 +670471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2141251993}
   - component: {fileID: 2141251994}
+  - component: {fileID: 2141251995}
   m_Layer: 5
   m_Name: DialogParent
   m_TagString: Untagged
@@ -670498,6 +670520,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2141251995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141251992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5868da4aa92dbc4429fa23aa10d54a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2142566234
 GameObject:
   m_ObjectHideFlags: 0
