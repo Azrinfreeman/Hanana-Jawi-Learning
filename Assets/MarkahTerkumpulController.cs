@@ -68,7 +68,7 @@ public class MarkahTerkumpulController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
-        PlayerPrefs.SetInt("MarkahTerkumpul", markahTerkumpul);
+        PlayerPrefs.SetInt("MarkahTerkumpul_" + PlayerPrefs.GetInt("CurrentPlayerNo_"), markahTerkumpul);
         //turn  whirte again
         textMarkah.color = new Color32(255, 255, 255, 255);
     }

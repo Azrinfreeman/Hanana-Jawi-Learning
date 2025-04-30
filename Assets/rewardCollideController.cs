@@ -27,7 +27,7 @@ public class rewardCollideController : MonoBehaviour
         jawapan = GameObject.Find("jawapan").GetComponent<JawapanPrasekolahController>();
         slider = GameObject.Find("sliderpet").GetComponent<Slider>();
         text = GameObject.Find("sliderpet").transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-        Debug.Log(PlayerPrefs.GetInt(jawapan.sceneName + "_Reward"));
+        Debug.Log(PlayerPrefs.GetInt(jawapan.sceneName + "_Reward_" + PlayerPrefs.GetInt("CurrentPlayerNo_")));
 
         StartCoroutine(lateStart());
     }
@@ -36,7 +36,7 @@ public class rewardCollideController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         slider.maxValue = maxCount;
-        count = PlayerPrefs.GetInt(jawapan.sceneName + "_Reward");
+        count = PlayerPrefs.GetInt(jawapan.sceneName + "_Reward_" + PlayerPrefs.GetInt("CurrentPlayerNo_"));
         text.text = count.ToString();
         slider.value = count;
     }
@@ -55,7 +55,7 @@ public class rewardCollideController : MonoBehaviour
             count++;
             text.text = count.ToString();
             slider.value = count;
-            PlayerPrefs.SetInt(jawapan.sceneName + "_Reward", count);
+            PlayerPrefs.SetInt(jawapan.sceneName + "_Reward_" + PlayerPrefs.GetInt("CurrentPlayerNo_"), count);
             if (!transform.GetChild(3).GetComponent<AudioSource>().isPlaying)
             {
                 transform.GetChild(3).GetComponent<AudioSource>().Play();
@@ -64,7 +64,7 @@ public class rewardCollideController : MonoBehaviour
             {
                 count = 0;
                 slider.value = count;
-                PlayerPrefs.SetInt(jawapan.sceneName + "_Reward", count);
+                PlayerPrefs.SetInt(jawapan.sceneName + "_Reward_" + PlayerPrefs.GetInt("CurrentPlayerNo_"), count);
                 RewardController.instance.DisplayReward();
             }
         }

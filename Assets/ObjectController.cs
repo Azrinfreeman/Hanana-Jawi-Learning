@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class ObjectController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start() { }
-
-    // Update is called once per frame
-    void Update() { }
-
-    IEnumerator startChanging(Transform toObj)
+    public void DisableObject()
     {
-        yield return new WaitForSeconds(.6f);
-        toObj.gameObject.SetActive(true);
         transform.gameObject.SetActive(false);
     }
 
-    public void changeObject(Transform toObj)
+    public void changeObject(Transform toActive)
     {
-        StartCoroutine(startChanging(toObj));
+        toActive.transform.gameObject.SetActive(true);
+
+        transform.gameObject.SetActive(false);
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
     }
 }
