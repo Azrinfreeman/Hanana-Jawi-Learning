@@ -88,7 +88,7 @@ public class PetController : MonoBehaviour
         Debug.Log(name);
         InDetails.instance.textList[0].color = new Color32(12, 74, 7, 255);
         InDetails.instance.textList[0].text = name;
-        PlayerPrefs.SetString(petname, name);
+        PlayerPrefs.SetString(petname + "_" + PlayerPrefs.GetInt("CurrentPlayerNo_"), name);
 
         tetapanMenu
             .transform.GetChild(1)
@@ -124,7 +124,7 @@ public class PetController : MonoBehaviour
                     //InDetails.instance.textList[0].text = petname;
                     //InDetails.instance.textList[1].text = jenisHaiwan;
                     //InDetails.instance.textList[2].text = jenisDarah;
-                    if (PlayerPrefs.GetString(petname).Equals(""))
+                    if (PlayerPrefs.GetString(petname + "_" + PlayerPrefs.GetInt("CurrentPlayerNo_")).Equals(""))
                     {
                         InDetails.instance.textList[0].color = new Color32(255, 0, 0, 255);
                         InDetails.instance.textList[0].text = "Belum Diberi";
@@ -132,7 +132,7 @@ public class PetController : MonoBehaviour
                     else
                     {
                         InDetails.instance.textList[0].color = new Color32(12, 74, 7, 255);
-                        InDetails.instance.textList[0].text = PlayerPrefs.GetString(petname);
+                        InDetails.instance.textList[0].text = PlayerPrefs.GetString(petname + "_" + PlayerPrefs.GetInt("CurrentPlayerNo_"));
                     }
 
                     btnConfirmChange.onClick.AddListener(() => WriteName());

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class RewardController : MonoBehaviour
 {
     public static RewardController instance;
@@ -20,6 +21,7 @@ public class RewardController : MonoBehaviour
     public int a = 0;
 
     public bool isAtEnd;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,6 @@ public class RewardController : MonoBehaviour
 
         StartCoroutine(CheckAndDisplayReward());
         ShowNextHint();
-
     }
 
     IEnumerator CheckAndDisplayReward()
@@ -44,11 +45,13 @@ public class RewardController : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         for (int i = 0; i < transform.childCount; i++)
         {
-
-            if (PlayerPrefs.GetInt(jawapan.sceneName + "_" + i) == 1)
+            if (
+                PlayerPrefs.GetInt(
+                    jawapan.sceneName + "_" + i + "_" + PlayerPrefs.GetInt("CurrentPlayerNo_")
+                ) == 1
+            )
             {
                 rewardItem[i].gameObject.SetActive(true);
-
             }
         }
     }
@@ -59,11 +62,12 @@ public class RewardController : MonoBehaviour
         //display next animal hint reward
         while (a < rewardItem.Count)
         {
-
             if (!rewardItem[a].gameObject.activeSelf)
             {
-
-                rewardHintImage.sprite = rewardItem[a].GetChild(0).transform.GetComponent<Image>().sprite;
+                rewardHintImage.sprite = rewardItem[a]
+                    .GetChild(0)
+                    .transform.GetComponent<Image>()
+                    .sprite;
                 a = rewardItem.Count;
                 goto skipHint;
             }
@@ -76,31 +80,29 @@ public class RewardController : MonoBehaviour
         //check if no more hint
         while (a < rewardItem.Count)
         {
-
             if (rewardItem[a].gameObject.activeSelf)
             {
-
                 a++;
-
             }
             if (a == rewardItem.Count)
             {
                 rewardHintImage.gameObject.SetActive(false);
                 isAtEnd = true;
                 rewardCollideController.instance.count = rewardCollideController.instance.maxCount;
-                rewardCollideController.instance.slider.value = rewardCollideController.instance.slider.maxValue;
+                rewardCollideController.instance.slider.value = rewardCollideController
+                    .instance
+                    .slider
+                    .maxValue;
             }
         }
     skipHint:
 
         a = 0;
-
     }
 
     void ShowNextHint()
     {
         StartCoroutine(ShowingHint());
-
     }
 
     IEnumerator processReward()
@@ -111,14 +113,21 @@ public class RewardController : MonoBehaviour
         {
             if (!rewardItem[i].gameObject.activeSelf)
             {
-                if (PlayerPrefs.GetInt(jawapan.sceneName + "_" + i) == 0)
+                if (
+                    PlayerPrefs.GetInt(
+                        jawapan.sceneName + "_" + i + "_" + PlayerPrefs.GetInt("CurrentPlayerNo_")
+                    ) == 0
+                )
                 {
                     rewardItem[i].gameObject.SetActive(true);
                     if (rewardItem[i].GetComponent<PatrolController>().isMammals)
                     {
                         rewardItem[i].transform.GetChild(1).transform.gameObject.SetActive(true);
                     }
-                    PlayerPrefs.SetInt(jawapan.sceneName + "_" + i, 1);
+                    PlayerPrefs.SetInt(
+                        jawapan.sceneName + "_" + i + "_" + PlayerPrefs.GetInt("CurrentPlayerNo_"),
+                        1
+                    );
                 }
 
                 i = rewardItem.Count;
@@ -135,18 +144,23 @@ public class RewardController : MonoBehaviour
             yield return new WaitForSeconds(1.3f);
             if (!isAtEnd)
             {
-
-                if (rewardCollideController.instance.count == rewardCollideController.instance.maxCount)
+                if (
+                    rewardCollideController.instance.count
+                    == rewardCollideController.instance.maxCount
+                )
                 {
                     rewardCollideController.instance.count = 0;
-                    rewardCollideController.instance.slider.value = rewardCollideController.instance.count;
+                    rewardCollideController.instance.slider.value = rewardCollideController
+                        .instance
+                        .count;
                 }
             }
             else
             {
-                rewardCollideController.instance.slider.value = rewardCollideController.instance.count;
+                rewardCollideController.instance.slider.value = rewardCollideController
+                    .instance
+                    .count;
             }
-
         }
         yield return new WaitForSeconds(0.3f);
         ShowNextHint();

@@ -9,8 +9,10 @@ public class PetUnlockerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text = transform.name;
 
+        text = transform.name;
+        text += "_" + PlayerPrefs.GetInt("CurrentPlayerNo_");
+        Debug.Log(text);
         if (PlayerPrefs.GetInt(text) == 0)
         {
             transform.gameObject.SetActive(false);

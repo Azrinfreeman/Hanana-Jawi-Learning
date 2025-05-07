@@ -43,7 +43,7 @@ public class RewardController2 : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
 
-            if (PlayerPrefs.GetInt(jawapan.sceneName + "_" + i) == 1)
+            if (PlayerPrefs.GetInt(jawapan.sceneName + "_" + i + "_" + PlayerPrefs.GetInt("CurrentPlayerNo_")) == 1)
             {
                 rewardItem[i].gameObject.SetActive(true);
 
@@ -109,10 +109,10 @@ public class RewardController2 : MonoBehaviour
         {
             if (!rewardItem[i].gameObject.activeSelf)
             {
-                if (PlayerPrefs.GetInt(jawapan.sceneName + "_" + i) == 0)
+                if (PlayerPrefs.GetInt(jawapan.sceneName + "_" + i + "_" + PlayerPrefs.GetInt("CurrentPlayerNo_")) == 0)
                 {
                     rewardItem[i].gameObject.SetActive(true);
-                    PlayerPrefs.SetInt(jawapan.sceneName + "_" + i, 1);
+                    PlayerPrefs.SetInt(jawapan.sceneName + "_" + i + "_" + PlayerPrefs.GetInt("CurrentPlayerNo_"), 1);
                 }
 
                 i = rewardItem.Count;

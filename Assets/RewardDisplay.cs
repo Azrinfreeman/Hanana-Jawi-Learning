@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class RewardDisplay : MonoBehaviour
 {
     public Transform List;
@@ -24,7 +25,6 @@ public class RewardDisplay : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         Transform clone;
 
-
         for (int i = 0; i < rewardCount; i++)
         {
             clone = Instantiate(List);
@@ -43,26 +43,58 @@ public class RewardDisplay : MonoBehaviour
         for (int i = 0; i < rewardCount; i++)
         {
             //gambar
-            transform.GetChild(i).transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = RewardController.instance.rewardAnimals[i].sprite;
+            transform
+                .GetChild(i)
+                .transform.GetChild(0)
+                .transform.GetChild(0)
+                .GetComponent<Image>()
+                .sprite = RewardController.instance.rewardAnimals[i].sprite;
             // nama
-            transform.GetChild(i).transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Reward " + (i + 1);
+            transform
+                .GetChild(i)
+                .transform.GetChild(0)
+                .transform.GetChild(1)
+                .GetComponent<TextMeshProUGUI>()
+                .text = "Reward " + (i + 1);
             //selesai / belum
-            transform.GetChild(i).transform.GetChild(0).transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
-            transform.GetChild(i).transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
+            transform
+                .GetChild(i)
+                .transform.GetChild(0)
+                .transform.GetChild(2)
+                .transform.GetChild(0)
+                .gameObject.SetActive(false);
+            transform
+                .GetChild(i)
+                .transform.GetChild(0)
+                .transform.GetChild(2)
+                .transform.GetChild(1)
+                .gameObject.SetActive(false);
 
-            if (PlayerPrefs.GetInt(jawapan.sceneName + "_" + i) == 1)
+            if (
+                PlayerPrefs.GetInt(
+                    jawapan.sceneName + "_" + i + "_" + PlayerPrefs.GetInt("CurrentPlayerNo_")
+                ) == 1
+            )
             {
                 Debug.Log("fetch from each level reward prefs");
-                transform.GetChild(i).transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
+                transform
+                    .GetChild(i)
+                    .transform.GetChild(0)
+                    .transform.GetChild(2)
+                    .transform.GetChild(1)
+                    .gameObject.SetActive(true);
             }
             else
             {
-                transform.GetChild(i).transform.GetChild(0).transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(true);
+                transform
+                    .GetChild(i)
+                    .transform.GetChild(0)
+                    .transform.GetChild(2)
+                    .transform.GetChild(0)
+                    .gameObject.SetActive(true);
             }
-
         }
     }
-
 
     public void FetchReward() { }
 
