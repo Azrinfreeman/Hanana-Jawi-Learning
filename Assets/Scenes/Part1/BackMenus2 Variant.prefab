@@ -108,6 +108,14 @@ PrefabInstance:
       propertyPath: m_text
       value: KELUAR
       objectReference: {fileID: 0}
+    - target: {fileID: 8896644909188301880, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
+      propertyPath: m_fontSize
+      value: 55.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896644909188301880, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 55.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

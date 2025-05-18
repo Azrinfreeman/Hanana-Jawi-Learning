@@ -47,6 +47,7 @@ public class RewardDisplay : MonoBehaviour
                 .GetChild(i)
                 .transform.GetChild(0)
                 .transform.GetChild(0)
+                .transform.GetChild(0)
                 .GetComponent<Image>()
                 .sprite = RewardController.instance.rewardAnimals[i].sprite;
             // nama
