@@ -3042,7 +3042,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -22117,6 +22117,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 438210707}
     m_Modifications:
+    - target: {fileID: 1102305036281425772, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1922662498}
+    - target: {fileID: 1102305036281425772, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1922662499}
+    - target: {fileID: 1102305036281425772, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 438210703}
+    - target: {fileID: 1102305036281425772, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102305036281425772, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102305036281425772, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102305036281425772, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102305036281425772, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102305036281425772, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: FrontScene
+      objectReference: {fileID: 0}
     - target: {fileID: 4707961764191114745, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -22196,6 +22232,10 @@ PrefabInstance:
     - target: {fileID: 4707961764191114745, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060437172191573715, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7353259230481915370, guid: aac8b04ca0a7942a8806d5d3f29edd97, type: 3}
       propertyPath: m_Name
@@ -30398,6 +30438,16 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3794603689778885062, guid: cec28d5855be3e447b477c9c32097797, type: 3}
   m_PrefabInstance: {fileID: 1922662496}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1922662498 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4731668265505250409, guid: cec28d5855be3e447b477c9c32097797, type: 3}
+  m_PrefabInstance: {fileID: 1922662496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1922662499 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4685018054619222723, guid: cec28d5855be3e447b477c9c32097797, type: 3}
+  m_PrefabInstance: {fileID: 1922662496}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1946782680
 GameObject:
   m_ObjectHideFlags: 0
@@ -37023,7 +37073,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 2
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
